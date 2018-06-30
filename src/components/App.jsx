@@ -8,6 +8,7 @@ import SalaryTable from './SalaryTable.jsx';
 import Navbar from './Navbar.jsx';
 import ProgressBar from './ProgressBar.jsx';
 import Charts from './Charts.jsx';
+import Summary from './Summary.jsx';
 import {
   SalaryCtx,
   SalaryUpdatedAtCtx,
@@ -46,6 +47,7 @@ export default class App extends React.Component {
         <div>
           <Route exact path="/" component={SalaryTable} />
           <Route exact path="/chart" component={Charts} />
+          <Route exact path="/summary" component={Summary} />
         </div>
       )
     }

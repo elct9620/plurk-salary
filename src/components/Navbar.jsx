@@ -21,6 +21,7 @@ export default (props) => {
       <ul className="navbar-nav mr-auto mt-2 mt-lg-0">
         <NavLink exact to="/">首頁</NavLink>
         <NavLink to="/chart">圖表</NavLink>
+        <NavLink to="/summary">統計</NavLink>
       </ul>
       <SalaryCtx.Consumer>
         {items => (

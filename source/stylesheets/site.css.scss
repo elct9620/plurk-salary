@@ -40,12 +40,17 @@ body {
   }
 }
 
-// Chart
-.charts {
+// Container
+
+%content-container {
   margin-top: 1em;
   margin-top: 1rem;
 }
 
+// Chart
+.charts {
+  @extend %content-container;
+}
 
 .chart-title {
   margin-bottom: 1em;
@@ -55,4 +60,9 @@ body {
 .single-chart {
   margin-bottom: 2em;
   margin-bottom: 2rem;
+}
+
+// Summary
+.summary {
+  @extend %content-container;
 }

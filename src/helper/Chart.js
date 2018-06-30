@@ -1,10 +1,11 @@
 // Filter
 export const ValidSalary = (item) => item['salary'].length == 1
+export const SelectAge = (min, max) => (item) => item['age'] >= min && item['age'] <= max
 
 // Converter
 export const SalaryToNumber = (item) => {
   return Object.assign({}, item, {
-    salary: parseInt(item['salary']) * 1000
+    salary: parseInt(item['salary'], 10) * 1000
   });
 }
 
@@ -49,4 +50,32 @@ export const SummaryToBubble = (items, xName, yName) => {
   }
 
   return toArray(summary(items));
+}
+
+// Math Helper
+export const Median = (items) => {
+  if (items.length == 1) {
+    return items[0];
+  }
+
+  const half = Math.floor(items.length / 2);
+
+  if (items.length % 2 == 0) {
+    return (items[half] + items[half -1]) / 2;
+  }
+
+  return items[half + 1];
+}
+
+export const Average = (items) => {
+  const sum = items.reduce((x, y) => x + y);
+  return sum / items.length;
+}
+
+export const Max = (items) => {
+  return items[items.length - 1];
+}
+
+export const Min = (items) => {
+  return items[0];
 }
