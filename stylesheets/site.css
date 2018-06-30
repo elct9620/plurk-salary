@@ -1,0 +1,32 @@
+body {
+  padding-top: 56px; }
+
+.loading {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  -webkit-transform: translate(-50%, -50%);
+          transform: translate(-50%, -50%); }
+
+.table-salary {
+  width: 100%;
+  margin-bottom: 0; }
+  .table-salary thead, .table-salary tbody, .table-salary tr, .table-salary td, .table-salary th {
+    display: block; }
+  .table-salary tr {
+    overflow: hidden;
+    clear: both; }
+  .table-salary td, .table-salary th {
+    float: left; }
+  .table-salary tbody {
+    width: 100%;
+    height: calc(100vh - 56px - 51px);
+    overflow-y: scroll; }
+
+.charts {
+  margin-top: 1em;
+  margin-top: 1rem; }
+
+.chart-title {
+  margin-bottom: 1em;
+  margin-bottom: 1rem; }
