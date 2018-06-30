@@ -23,7 +23,7 @@ body {
     height: calc(100vh - 56px - 51px);
     overflow-y: scroll; }
 
-.charts {
+.charts, .summary {
   margin-top: 1em;
   margin-top: 1rem; }
 
