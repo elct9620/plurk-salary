@@ -6,6 +6,7 @@ import {
 
 import SalaryTable from './SalaryTable.jsx';
 import Navbar from './Navbar.jsx';
+import ProgressBar from './ProgressBar.jsx';
 import {
   SalaryCtx,
   SalaryUpdatedAtCtx,
@@ -13,6 +14,12 @@ import {
 } from '../contexts/Salary';
 
 import SalaryDataLoader from '../helper/SalaryDataLoader'
+
+const LoadingView = ({progress}) => (
+  <div className="container loading">
+    <ProgressBar progress={progress} />
+  </div>
+)
 
 export default class App extends React.Component {
   constructor(props) {
@@ -28,8 +35,20 @@ export default class App extends React.Component {
   }
 
   loadSalaryData() {
-    SalaryDataLoader((progress) => this.setState({progress: progress * 100}))
+    SalaryDataLoader((progress) => this.setState({progress: progress}))
       .then(json => this.setState({ salary: json.items, updatedAt: json.updated_at * 1000 }))
+  }
+
+  loadingOrDisplay() {
+    if (this.state.progress >= 100) {
+      return (
+        <div>
+          <Route exact path="/" component={SalaryTable} />
+        </div>
+      )
+    }
+
+    return <LoadingView progress={this.state.progress} />
   }
 
   render() {
@@ -37,14 +56,12 @@ export default class App extends React.Component {
     return (
       <Router>
         <div>
-          <SalaryLoadProgressCtx.Provider value={this.state.progress}>
-            <SalaryCtx.Provider value={this.state.salary}>
-              <SalaryUpdatedAtCtx.Provider value={this.state.updatedAt}>
-                <Navbar />
-                <Route exact path="/" component={SalaryTable} />
-              </SalaryUpdatedAtCtx.Provider>
-            </SalaryCtx.Provider>
-          </SalaryLoadProgressCtx.Provider>
+          <SalaryCtx.Provider value={this.state.salary}>
+            <SalaryUpdatedAtCtx.Provider value={this.state.updatedAt}>
+              <Navbar />
+              {this.loadingOrDisplay()}
+            </SalaryUpdatedAtCtx.Provider>
+          </SalaryCtx.Provider>
         </div>
       </Router>
       )

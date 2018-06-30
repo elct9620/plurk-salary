@@ -7,7 +7,7 @@ export default function(onProgress) {
   const request = new XMLHttpRequest();
   request.addEventListener('progress', (ev) => {
     if (onProgress && ev.lengthComputable) {
-      onProgress(Math.round(ev.loaded / ev.total), 2);
+      onProgress((ev.loaded / ev.total) * 100);
     }
   })
 

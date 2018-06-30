@@ -2,7 +2,6 @@ import React from 'react';
 
 import Row from './SalaryTable/Row.jsx';
 import FilterButton from './FilterButton.jsx';
-import ProgressBar from './ProgressBar.jsx';
 import {
   SalaryCtx,
   SalaryLoadProgressCtx
@@ -33,18 +32,6 @@ export default class SalaryTable extends React.Component {
   }
 
   salaryRow(items) {
-    if (items.length == 0) {
-      return (
-        <tr>
-          <td colSpan="7" className="text-center">
-            <SalaryLoadProgressCtx.Consumer>
-              {progress => <ProgressBar progress={progress} />}
-            </SalaryLoadProgressCtx.Consumer>
-          </td>
-        </tr>
-      )
-    }
-
     return this.sort(items).map(salary => {
       return (<Row key={salary.rid} {...salary} />);
     });
