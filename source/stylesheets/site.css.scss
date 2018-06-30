@@ -1,3 +1,5 @@
+// Global
+
 body {
   padding-top: 56px;
 }
@@ -9,4 +11,31 @@ body {
   left: 50%;
 
   transform: translate(-50%, -50%);
+}
+
+// Table Enhance
+.table-salary {
+  width: 100%;
+  margin-bottom: 0;
+
+  thead, tbody, tr, td, th {
+    display: block;
+  }
+
+  tr {
+    overflow: hidden;
+    clear: both;
+  }
+
+  td, th {
+    float: left;
+  }
+
+  tbody {
+    width: 100%;
+    // View Height - Navbar - Table Header
+    height: calc(100vh - 56px - 51px);
+
+    overflow-y: scroll;
+  }
 }

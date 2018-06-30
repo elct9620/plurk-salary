@@ -56,16 +56,16 @@ export default class SalaryTable extends React.Component {
 
   render() {
     return (
-      <table className="table table-striped">
+      <table className="table table-striped table-salary">
         <thead className="thead-dark">
           <tr>
-            <th><FilterButton onClick={this.sortBy('rid')} current={this.currentSort('rid')}>RID</FilterButton></th>
-            <th><FilterButton onClick={this.sortBy('age')} current={this.currentSort('age')}>年齡</FilterButton></th>
-            <th>工作地點</th>
-            <th>職業</th>
-            <th>學歷</th>
-            <th><FilterButton onClick={this.sortBy('year')} current={this.currentSort('year')}>年資</FilterButton></th>
-            <th><FilterButton onClick={this.sortBy('salary')} current={this.currentSort('salary')}>薪資</FilterButton></th>
+            <th className="col-md-2"><FilterButton onClick={this.sortBy('rid')} current={this.currentSort('rid')}>RID</FilterButton></th>
+            <th className="col-md-1"><FilterButton onClick={this.sortBy('age')} current={this.currentSort('age')}>年齡</FilterButton></th>
+            <th className="col-md-2">工作地點</th>
+            <th className="col-md-3">職業</th>
+            <th className="col-md-2">學歷</th>
+            <th className="col-md-1"><FilterButton onClick={this.sortBy('year')} current={this.currentSort('year')}>年資</FilterButton></th>
+            <th className="col-md-1"><FilterButton onClick={this.sortBy('salary')} current={this.currentSort('salary')}>薪資</FilterButton></th>
           </tr>
         </thead>
         <tbody>
