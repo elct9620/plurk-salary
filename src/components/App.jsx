@@ -1,12 +1,13 @@
 import React from 'react';
 import {
-  BrowserRouter as Router,
+  HashRouter as Router,
   Route
 } from 'react-router-dom';
 
 import SalaryTable from './SalaryTable.jsx';
 import Navbar from './Navbar.jsx';
 import ProgressBar from './ProgressBar.jsx';
+import Charts from './Charts.jsx';
 import {
   SalaryCtx,
   SalaryUpdatedAtCtx,
@@ -44,6 +45,7 @@ export default class App extends React.Component {
       return (
         <div>
           <Route exact path="/" component={SalaryTable} />
+          <Route exact path="/chart" component={Charts} />
         </div>
       )
     }
