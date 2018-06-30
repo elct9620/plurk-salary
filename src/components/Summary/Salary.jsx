@@ -98,7 +98,7 @@ export default class Salary extends React.Component {
 
   render() {
     return (
-      <table className="table table-stripted">
+      <table className="table table-striped">
         <thead className="thead-dark">
           <tr>
             <th>年齡</th>
