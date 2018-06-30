@@ -1,7 +1,16 @@
 import React from 'react';
+import {
+  BrowserRouter as Router,
+  Route
+} from 'react-router-dom';
 
 import SalaryTable from './SalaryTable.jsx';
-import { SalaryLoadProgressCtx } from '../contexts/Salary';
+import Navbar from './Navbar.jsx';
+import {
+  SalaryCtx,
+  SalaryUpdatedAtCtx,
+  SalaryLoadProgressCtx
+} from '../contexts/Salary';
 
 import SalaryDataLoader from '../helper/SalaryDataLoader'
 
@@ -20,16 +29,24 @@ export default class App extends React.Component {
 
   loadSalaryData() {
     SalaryDataLoader((progress) => this.setState({progress: progress * 100}))
-      .then(json => this.setState({ salary: json.items, updatedAt: json.updated_at }))
+      .then(json => this.setState({ salary: json.items, updatedAt: json.updated_at * 1000 }))
   }
 
   render() {
+    // TODO: Improve Context Design
     return (
-      <div className="container">
-        <SalaryLoadProgressCtx.Provider value={this.state.progress}>
-          <SalaryTable salary={this.state.salary} />
-        </SalaryLoadProgressCtx.Provider>
-      </div>
+      <Router>
+        <div>
+          <SalaryLoadProgressCtx.Provider value={this.state.progress}>
+            <SalaryCtx.Provider value={this.state.salary}>
+              <SalaryUpdatedAtCtx.Provider value={this.state.updatedAt}>
+                <Navbar />
+                <Route exact path="/" component={SalaryTable} />
+              </SalaryUpdatedAtCtx.Provider>
+            </SalaryCtx.Provider>
+          </SalaryLoadProgressCtx.Provider>
+        </div>
+      </Router>
       )
   }
 }
