@@ -5,7 +5,7 @@ export const SelectAge = (min, max) => (item) => item['age'] >= min && item['age
 // Converter
 export const SalaryToNumber = (item) => {
   return Object.assign({}, item, {
-    salary: parseInt(item['salary'], 10) * 1000
+    salary: parseFloat(item['salary'], 10) * 1000
   });
 }
 
