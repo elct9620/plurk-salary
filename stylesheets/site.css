@@ -30,3 +30,7 @@ body {
 .chart-title {
   margin-bottom: 1em;
   margin-bottom: 1rem; }
+
+.single-chart {
+  margin-bottom: 2em;
+  margin-bottom: 2rem; }
