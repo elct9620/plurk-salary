@@ -3,13 +3,13 @@ import Chart from 'chart.js';
 
 import { SummaryToBubble } from '../../helper/Chart';
 
-export default class AgeSalaryChart extends React.Component {
+export default class YearSalaryChart extends React.Component {
   constructor(props) {
     super(props);
 
     this.chart = null;
     this.chartRef = React.createRef();
-    this.summary = SummaryToBubble(this.props.items, 'age', 'salary');
+    this.summary = SummaryToBubble(this.props.items, 'year', 'salary');
   }
 
   componentDidMount() {
@@ -19,7 +19,7 @@ export default class AgeSalaryChart extends React.Component {
         type: 'bubble',
         data: {
           datasets: [{
-            label: '年齡 x 薪資',
+            label: '年資 x 薪資',
             data: this.summary,
             backgroundColor: 'rgba(255, 99, 132, 0.9)'
           }]
@@ -44,7 +44,7 @@ export default class AgeSalaryChart extends React.Component {
 
   getSnapshotBeforeUpdate(prevProps, prevState) {
     if (prevProps.items.length != this.props.items) {
-      this.summary = SummaryToBubble(this.props.items, 'age', 'salary');
+      this.summary = SummaryToBubble(this.props.items, 'year', 'salary');
       return this.summary;
     }
 

@@ -14,19 +14,19 @@ export const SalaryToChart = (items) => {
     .map(SalaryToNumber)
 }
 
-export const SummaryToAgeSalary = (items) => {
+export const SummaryToBubble = (items, xName, yName) => {
   const summary = (items) => {
     const summary = {};
     items.forEach(item => {
-      if (summary[item['age']] == undefined) {
-        summary[item['age']] = {};
+      if (summary[item[xName]] == undefined) {
+        summary[item[xName]] = {};
       }
 
-      if (summary[item['age']][item['salary']] == undefined) {
-        summary[item['age']][item['salary']] = 0;
+      if (summary[item[xName]][item[yName]] == undefined) {
+        summary[item[xName]][item[yName]] = 0;
       }
 
-      summary[item['age']][item['salary']] += 1;
+      summary[item[xName]][item[yName]] += 1;
     });
 
     return summary;
@@ -35,12 +35,12 @@ export const SummaryToAgeSalary = (items) => {
   const toArray = (summary) => {
     const summaryArray = [];
 
-    for(let age in summary) {
-      for(let salary in summary[age]) {
+    for(let x in summary) {
+      for(let y in summary[x]) {
         summaryArray.push({
-          x: age,
-          y: salary,
-          r: summary[age][salary],
+          x: x,
+          y: y,
+          r: summary[x][y],
         })
       }
     }
