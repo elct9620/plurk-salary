@@ -3,6 +3,7 @@ import React from 'react';
 // TODO: Reuse chart if have same display and rule
 import AgeSalaryChart from './Charts/AgeSalaryChart.jsx';
 import YearSalaryChart from './Charts/YearSalaryChart.jsx';
+import CitySalaryChart from './Charts/CitySalaryChart.jsx';
 
 import { SalaryCtx } from '../contexts/Salary';
 import { SalaryToChart } from '../helper/Chart';
@@ -40,6 +41,7 @@ class Charts extends React.Component {
       <div className="container charts">
         <ChartSection label="年齡與薪資分佈" items={this.state.salary} component={AgeSalaryChart} />
         <ChartSection label="年資與薪資分佈" items={this.state.salary} component={YearSalaryChart} />
+        <ChartSection label="地區與薪資分佈" items={this.state.salary} component={CitySalaryChart} />
       </div>
     )
   }

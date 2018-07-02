@@ -52,6 +52,15 @@ export const SummaryToBubble = (items, xName, yName) => {
   return toArray(summary(items));
 }
 
+// Column Helper
+export const PickUp = (column) => items => items.map(item => item[column])
+export const GroupBy = (column) => items => {
+  return items.reduce((group, item) => {
+    (group[item[column]] = group[item[column]] || []).push(item)
+    return group;
+  }, {});
+}
+
 // Math Helper
 export const Median = (items) => {
   if (items.length == 1) {
@@ -69,7 +78,7 @@ export const Median = (items) => {
 
 export const Average = (items) => {
   const sum = items.reduce((x, y) => x + y);
-  return sum / items.length;
+  return Math.round(sum / items.length * 100) / 100;
 }
 
 export const Max = (items) => {
