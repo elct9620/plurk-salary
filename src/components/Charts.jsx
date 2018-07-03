@@ -4,6 +4,7 @@ import React from 'react';
 import AgeSalaryChart from './Charts/AgeSalaryChart.jsx';
 import YearSalaryChart from './Charts/YearSalaryChart.jsx';
 import CitySalaryChart from './Charts/CitySalaryChart.jsx';
+import JobSalaryChart from './Charts/JobSalaryChart.jsx';
 
 import { SalaryCtx } from '../contexts/Salary';
 import { SalaryToChart } from '../helper/Chart';
@@ -42,6 +43,7 @@ class Charts extends React.Component {
         <ChartSection label="年齡與薪資分佈" items={this.state.salary} component={AgeSalaryChart} />
         <ChartSection label="年資與薪資分佈" items={this.state.salary} component={YearSalaryChart} />
         <ChartSection label="地區與薪資分佈" items={this.state.salary} component={CitySalaryChart} />
+        <ChartSection label="職業與薪資分佈" items={this.state.salary} component={JobSalaryChart} />
       </div>
     )
   }
